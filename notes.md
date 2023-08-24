@@ -25,15 +25,16 @@ Each person has the following attributes:
 | Name\_last | VARCHAR | Last name | 
 | Name\_first | VARCHAR | First name | 
 | Name\_middle | VARCHAR | Middle name | 
-| Gender | CHAR(1) | Gender of the person. Gender could only be male or female or intersex, or transgender |
-| Sex | VARCHAR | Sexual orientation of the person. But Sexual orientation could be: Heterosexual, Homosexual, Gay, Lesbian, Pansexual, Asexual, etc. |
+| Sex | CHAR(1) | Sex assignable to a person (Male Female or Intersex) |
+| Gender | INTEGER | Gender of the person. Gender is what a person feels by themselves. (Many types) |
+| Orientation | INTEGER | Sexual orientatation of the person. It means the attraction type a person feels. |
 | Date\_of\_birth | DATE | The date of birth |
 | Place\_of\_birth | VARCHAR | The place of birth |
 | Date\_of\_death | DATE | Date of death |
 | Place\_of\_death | VARCHAR |  Place of death | 
 | Cause\_of\_death | VARCHAR | Cause of death | 
 | Gotra | INTEGER | Gotra of that individual |
-| Notes | TEXT | Notes about the individual, maybe about their life, or links to bio or anything |
+| Note | TEXT | Note about the individual, maybe about their life, or links to bio or anything |
 
 ##### Primary Keys:
 - Id\_PK
@@ -43,9 +44,10 @@ Each person has the following attributes:
 - Sex (References Sex)
 - Gotra (References Gotra)
 
-#### Gender
-Stores the list of available genders.
-Each gender has the following attributes.
+#### Sex
+Stores the list of available sex assignable to a person.
+Each sex has the following attributes.
+There are only 3 sexes assignable to person: Male, Female and Intersex.
 
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
@@ -53,13 +55,30 @@ Each gender has the following attributes.
 | Name | VARCHAR | Name of the gender |
 | Note | TEXT | Additional info about the gender |
 
-Gender datas:
+##### Primary Keys:
+- Id\_PK
+
+##### Foreign Keys:
+- (None)
+
+Sex datas:
 
 | Id\_PK | Name |
 |--------|------|
 | M      | Male |
 | F   | Female  |
-| N | Not mentioned here |
+| I  | Intersex |
+
+#### Gender
+Stores the list of available genders.
+Gender relates to how a person feel about themselves.
+Each gender entries has the following attributes.
+
+| Column Names (Attributes) | Type | Description |
+|-----------|----------|---------|
+| Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gender |
+| Name | VARCHAR | Name of the gender |
+| Note | TEXT | Additional info about the gender |
 
 ##### Primary Keys:
 - Id\_PK
@@ -67,9 +86,21 @@ Gender datas:
 ##### Foreign Keys:
 - (None)
 
-#### Sex
+Sexual orientation datas:
+
+| Name | Note |
+|------|------|
+| Cisgender | A person that identifies as same gender as sex assigned at birth |
+| Transgender | A person whose gender identity differs from sex assigned at birth |
+| Non-binary | A person that do not identify as male or female. |
+| Genderfluid | Their gender identity shifts over time, some days feeling as masculine and other days feeling feminine. |
+| Pangender | A person who has wide range of gender identities, and may feel connected to different genders as their identity. |
+| Demigender | A person who identifies partially as a particular gender. |
+| Agender | A person who do not identify with any gender. They may feel lack of gender or maybe a neutral gender identity |
+
+#### Orientation
 Stores the list of available sexual orientations.
-Each gender has the following attributes.
+Each orientation entries has the following attributes.
 
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
@@ -87,13 +118,12 @@ Sexual orientation datas:
 
 | Name | Note |
 |------|------|
-| Heterosexual Male | Male that is attracted to female |
-| Heterosexual Female | Female that is attracted to male |
-| Homosexual Male | Gay |
-| Homosexual Female | Lesbian |
-| Bisexual | Attracted to male and female both |
-| Pansexual | Attracted to anyone including other genders like trans |
+| Heterosexual | Straight, or the individual that are attracted to opposite genders |
+| Homosexual | Gay, Lesbian, or the individual that are attracted to the same genders |
+| Bisexual | Attracted to both own gender and opposite gender |
+| Pansexual | Attracted to anyone regardless of their gender. May be attracted based on personality or emotional connection |
 | Asexual | Not attracted to any gender |
+| Questioning | People that are not sure about their sexual orientation and still exploring |
 
 #### Gotra
 Stores the list of available gotras.
