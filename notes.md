@@ -5,8 +5,9 @@
 
 ### Tables
 * [Individual](#individual)
-* [Gender](#gender)
 * [Sex](#sex)
+* [Gender](#gender)
+* [Orientation](#orientation)
 * [Gotra](#gotra)
 * [Parenthood](#parenthood)
 * [Parenthood\_type](#parenthood\_type)
@@ -40,8 +41,9 @@ Each person has the following attributes:
 - Id\_PK
 
 ##### Foreign Keys:
-- Gender (References Gender)
 - Sex (References Sex)
+- Gender (References Gender)
+- Orientation (References Orientation)
 - Gotra (References Gotra)
 
 #### Sex
@@ -92,7 +94,7 @@ Sexual orientation datas:
 |------|------|
 | Cisgender | A person that identifies as same gender as sex assigned at birth |
 | Transgender | A person whose gender identity differs from sex assigned at birth |
-| Non-binary | A person that do not identify as male or female. |
+| Non-binary | A person that does not identify as male or female. |
 | Genderfluid | Their gender identity shifts over time, some days feeling as masculine and other days feeling feminine. |
 | Pangender | A person who has wide range of gender identities, and may feel connected to different genders as their identity. |
 | Demigender | A person who identifies partially as a particular gender. |
