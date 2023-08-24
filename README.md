@@ -29,3 +29,5 @@ This project is a semester project on DBMS course we study in the Fifth Semester
 5. Bikash Adhikari - 077BEI015 \
    A very talented coder and hobbyist leader.\
    GitHub account : [https://github.com/iambikash378]
+
+The name of our group is: **The Growcrastinators**
