@@ -79,7 +79,7 @@ Each gender entries has the following attributes.
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
 | Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gender |
-| Name | VARCHAR | Name of the gender |
+| Name | VARCHAR UNIQUE | Name of the gender |
 | Note | TEXT | Additional info about the gender |
 
 ##### Primary Keys:
@@ -88,7 +88,7 @@ Each gender entries has the following attributes.
 ##### Foreign Keys:
 - (None)
 
-Sexual orientation datas:
+Gender datas:
 
 | Name | Note |
 |------|------|
@@ -107,7 +107,7 @@ Each orientation entries has the following attributes.
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
 | Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular sexual orientation |
-| Name | VARCHAR | Name of the sexual orientation |
+| Name | VARCHAR UNIQUE | Name of the sexual orientation |
 | Note | TEXT | Additional info about the sexual orientation |
 
 ##### Primary Keys:
@@ -129,12 +129,12 @@ Sexual orientation datas:
 
 #### Gotra
 Stores the list of available gotras.
-Each gender has the following attributes.
+Each gotra has the following attributes.
 
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
 | Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gotra |
-| Name | VARCHAR | Name of the gotra |
+| Name | VARCHAR UNIQUE | Name of the gotra |
 | Note | TEXT | Additional info about the gotra |
 
 ##### Primary Keys:
@@ -149,7 +149,9 @@ Gotra datas:
 |------|------|
 | Kaashyap | Gotra descending from Kashyap Rishi |
 | Ghritakaushik | Gotra descending from Ghritakoshik Rishi |
-| Bhardwaj | |
+| Bharadwaj | Gotra descending from Bhardwaj rishi |
+| Atreya | Gotra descending from Atri rishi |
+| Kaudinya | Some gotra |
 
 
 #### Parenthood
@@ -173,7 +175,7 @@ Stores the information about a parenthood of a particular individual. It include
 
 #### Parenthood\_type
 Stores the list of available parenthood types.
-Each gender has the following attributes.
+Each parenthood type has the following attributes.
 
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
@@ -181,6 +183,15 @@ Each gender has the following attributes.
 | Role | VARCHAR | Role in parenting (like father or mother or guardian) |
 | Type | VARCHAR | Type of parenthood (like biological, surrogate, foster etc) |
 | Note | TEXT | Additional info about the parenting. |
+
+##### Primary Keys:
+- Id\_PK
+
+##### Foreign Keys:
+- (None)
+
+##### Unique Constraint
+- (Role, Type)
 
 Parenthood type datas:
 
@@ -193,19 +204,13 @@ Parenthood type datas:
 | Mother | Foster | Foster Mother (temporarily serving as mother, however, doesn't posses same sort of decision making rights, or legal responsibilities as biological or adoptive mother |
 | Father | Foster | Same as foster mother but father |
 
-##### Primary Keys:
-- Id\_PK
-
-##### Foreign Keys:
-- (None)
-
 #### Relationship
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
 | Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gotra |
-| Relationship\_type | INTEGER | Relationship type |
 | Individual\_1 | INTEGER | First individual in relationship (Usually Male) |
 | Individual\_2 | INTEGER | Second individual in relationship (Usually Female) |
+| Relationship\_type | INTEGER | Relationship type |
 | Start | DATE | Date of start of the relationship |
 | End | DATE | Date of end of the relationship |
 | Note | TEXT | Additional info about the relationship |
@@ -214,18 +219,18 @@ Parenthood type datas:
 - Id\_PK
 
 ##### Foreign Keys:
-- Relationship\_type (References Relationship_type)
 - Individual\_1 (References Individual)
 - Individual\_2 (References Individual)
+- Relationship\_type (References Relationship_type)
 
 #### Relationship\_type
 Stores the list of available relationship type.
-Each gender has the following attributes.
+Each relationship type has the following attributes.
 
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
 | Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular relationship type |
-| Name | VARCHAR | Name of the relationship type |
+| Name | VARCHAR UNIQUE | Name of the relationship type |
 | Note | TEXT | Additional info about the relationship type |
 
 Relationship type datas:
@@ -233,9 +238,9 @@ Relationship type datas:
 | Name | Note |
 |------|------|
 | Marriage | Legal form of marriage between two people |
-| Live\_in\_relationship | Two people living in relationship without marrying each other. |
+| Living in relationship | Two people living in relationship without marrying each other. |
 | Dating | Two people currently dating |
-| Committed\_relationship | Two people in a committed relationship |
+| Committed relationship | Two people in a committed relationship |
 
 ##### Primary Keys:
 - Id\_PK
@@ -251,11 +256,11 @@ Relationship type datas:
 | Head\_1 | INTEGER | First head of the family |
 | Head\_2 | INTEGER | Second head of the family |
 | Name | VARCHAR | Name of the family |
-| Type | INTEGER | Type of the family |
+| Family\_type | INTEGER | Type of the family |
+| Gotra | INTEGER | Gotra that the family belongs to |
 | Description | VARCHAR | Description about the family |
 | Start | DATE | Date when the family started |
 | END | DATE | Date when the family ended |
-| Gotra | INTEGER | Gotra that the family belongs to |
 | Note | TEXT | More information about the family |
 
 ##### Primary Keys:
@@ -269,12 +274,12 @@ Relationship type datas:
 
 #### Family\_type
 Stores the list of available family types.
-Each gender has the following attributes.
+Each family has the following attributes.
 
 | Column Names (Attributes) | Type | Description |
 |-----------|----------|---------|
 | Id\_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular family types |
-| Name | VARCHAR | Name of the family types |
+| Name | VARCHAR UNIQUE | Name of the family types |
 | Note | TEXT | Additional info about the family types |
 
 ##### Primary Keys:
@@ -282,3 +287,10 @@ Each gender has the following attributes.
 
 ##### Foreign Keys:
 - (None)
+
+Family Type Datas:
+
+| Name | Note |
+|------|------|
+| Joint Family | A large family consisting of few generations, and couples from them living together, sharing a common kitchen and roof |
+| Nuclear Family | A small family consisting only parents and children, and maybe one or two related members living together, sharing a common kitchen and roof |
