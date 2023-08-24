@@ -37,9 +37,9 @@ Each person has the following attributes:
 ##### Primary Keys:
 - Id_PK
 ##### Foreign Keys:
-- Gender
-- Sex
-- Gotra
+- Gender (References Gender)
+- Sex (References Sex)
+- Gotra (References Gotra)
 
 #### Gender
 Stores the list of available genders.
@@ -51,6 +51,11 @@ Each gender has the following attributes.
 | Name | VARCHAR | Name of the gender |
 | Note | TEXT | Additional info about the gender |
 
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- (None)
+
 #### Sex
 Stores the list of available sexual orientations.
 Each gender has the following attributes.
@@ -61,6 +66,11 @@ Each gender has the following attributes.
 | Name | VARCHAR | Name of the sexual orientation |
 | Note | TEXT | Additional info about the sexual orientation |
 
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- (None)
+
 #### Gotra
 Stores the list of available gotras.
 Each gender has the following attributes.
@@ -70,8 +80,25 @@ Each gender has the following attributes.
 | Id_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gotra |
 | Name | VARCHAR | Name of the gotra |
 | Note | TEXT | Additional info about the gotra |
+
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- (None)
+
 #### Parenthood
-Stores the information about a parenthood of a particular individual. It includes the both the parents, and
+Stores the information about a parenthood of a particular individual. It includes the parent of the individual and the parenting type.
+
+| Column Names (Attributes) | Type | Description |
+|-----------|----------|---------|
+| Id_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gotra |
+
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- Individual (References Individual)
+- Parent (References Individual)
+- Parenthood_type (References Parenthood_type)
 
 #### Parenthood_type
 Stores the list of available parenthood types.
@@ -83,7 +110,23 @@ Each gender has the following attributes.
 | Name | VARCHAR | Name of the parenthood types |
 | Note | TEXT | Additional info about the parenthood types |
 
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- (None)
+
 #### Relationship
+| Column Names (Attributes) | Type | Description |
+|-----------|----------|---------|
+| Id_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gotra |
+
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- Relationship_type (References Relationship_type)
+- Individual_1 (References Individual)
+- Individual_2 (References Individual)
+
 #### Relationship_type
 Stores the list of available relationship type.
 Each gender has the following attributes.
@@ -93,7 +136,23 @@ Each gender has the following attributes.
 | Id_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular relationship type |
 | Name | VARCHAR | Name of the relationship type |
 | Note | TEXT | Additional info about the relationship type |
+
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- (None)
+
 #### Family
+
+| Column Names (Attributes) | Type | Description |
+|-----------|----------|---------|
+| Id_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular gotra |
+
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- 
+
 #### Family_type
 Stores the list of available family types.
 Each gender has the following attributes.
@@ -103,3 +162,8 @@ Each gender has the following attributes.
 | Id_PK | INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL | The primary key that identifies a particular family types |
 | Name | VARCHAR | Name of the family types |
 | Note | TEXT | Additional info about the family types |
+
+##### Primary Keys:
+- Id_PK
+##### Foreign Keys:
+- (None)
